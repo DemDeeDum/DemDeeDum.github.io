@@ -5,7 +5,7 @@ function askName() {
 }
 
 function sayHello(name) {
-    alert('Hello, $(name)! How are you?');
+    alert(`Hello, ${name}! How are you?`);
 }
 
 let userName = askName();
