@@ -9,4 +9,4 @@ function sayHello(name) {
 }
 
 let userName = askName();
-sayHello(name);
+sayHello(userName);
