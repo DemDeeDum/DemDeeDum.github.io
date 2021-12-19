@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main,
+.header,
+.footer,
+.body {
+    width: 100vw;
+    overflow: hidden;
+}
+
+.body {
+    display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: minmax(5em, max-content);
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 5vw minmax(min-content, 20vw) minmax(20em, 70vw) 5vw;
+}
+
+.aside {
+    padding-left: 1em;
+}
+
+.category-list-container {
+    padding-top: 1em;
+}
+
+.category-list {
+    list-style-type: none;
+    padding-left: .5em;
+    margin-top: .5em;
+}
+
+.category-list li {
+    margin-bottom: .5em;
+    font-weight: bold;
+}

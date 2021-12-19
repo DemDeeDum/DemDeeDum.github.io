@@ -1,0 +1,23 @@
+.top-sells-header {
+    text-align: center;
+    font-size: 2em;
+}
+
+.top-sells-header-container {
+    margin-bottom: 3em;
+}
+
+.top-sells-image {
+    min-height: 15em;
+    max-height: 20em;
+
+    min-width: 14em;
+    max-width: 17em;
+
+}
+
+.top-sells-item-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+    grid-template-rows: minmax(20em, max-content);
+}
