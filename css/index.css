@@ -7,17 +7,16 @@
     margin-bottom: 3em;
 }
 
+.top-sells-item {
+    text-align: center;
+}
+
 .top-sells-image {
-    min-height: 15em;
-    max-height: 20em;
-
-    min-width: 14em;
-    max-width: 17em;
-
+    width: 15em;
 }
 
 .top-sells-item-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-    grid-template-rows: minmax(20em, max-content);
+    grid-template-columns: repeat(auto-fill, minmax(17em, 1fr));
+    grid-auto-rows: minmax(30em, max-content);
 }

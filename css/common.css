@@ -3,27 +3,40 @@
     padding: 0;
 }
 
-.main,
-.header,
-.footer,
-.body {
-    width: 100vw;
-    overflow: hidden;
-}
-
-.body {
-    display: grid;
-    grid-template-columns: 100vw;
-    grid-template-rows: minmax(5em, max-content);
+body > * {
+    margin-bottom: 2em;
 }
 
 .main {
     display: grid;
-    grid-template-columns: 5vw minmax(min-content, 20vw) minmax(20em, 70vw) 5vw;
+    grid-template-columns: 5vw minmax(10em, 10vw) minmax(20em, 80vw) 5vw;
 }
 
-.aside {
-    padding-left: 1em;
+.nav-header {
+    display: grid;
+    grid-template-columns: 5vw 20vw 40vw 20vw 5vw;
+}
+
+#header-shop-name {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.top-sells-image-container {
+    text-align: center;
+}
+
+
+@media (max-width: 709px) {
+    .main {
+        grid-template-columns: none;
+    }
+    
+    .aside {
+        display: grid;
+        grid-template-columns: 20vw 20vw 60vw;
+        margin-bottom: 2em;
+    }
 }
 
 .category-list-container {
