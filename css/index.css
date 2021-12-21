@@ -11,14 +11,37 @@
     text-align: center;
 }
 
-.top-sells-image {
+.top-sells-item-image {
     width: 15em;
 }
 
 .top-sells-item-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(17em, 1fr));
-    grid-auto-rows: minmax(30em, max-content);
+    grid-auto-rows: minmax(32em, max-content);
+}
+
+.top-sells-item-image-container {
+    margin-bottom: 2em;
+}
+
+.top-sells-item-title-container {
+    margin-bottom: 1em;
+}
+
+.top-sells-item-price-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2em;
+}
+
+.top-sells-item-button {
+    width: 80%;
+    height: 2em;
+    background-color: #222222;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
 }
 
 .main {
