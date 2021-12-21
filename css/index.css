@@ -55,7 +55,7 @@
     }
     .aside {
         display: grid;
-        grid-template-columns: 20vw 20vw 60vw;
+        grid-template-columns: 20vw 20vw;
         margin-bottom: 2em;
     }
 }

@@ -22,6 +22,10 @@
         grid-template-columns: 5vw 20vw 50vw 10vw 5vw;
     }
     
+    .header-shop-name-container {
+        z-index: 10;
+    }
+    
     #header-shop-name {
         font-size: 2em;
         font-weight: bold;
