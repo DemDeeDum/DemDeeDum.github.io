@@ -7,9 +7,23 @@ body > * {
     margin-bottom: 2em;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: darkseagreen;
+}
+
 .main {
     display: grid;
     grid-template-columns: 5vw minmax(10em, 10vw) minmax(20em, 80vw) 5vw;
+}
+
+.header {
+    padding-top: 3em;
+    padding-bottom: 2em;
 }
 
 .nav-header {
