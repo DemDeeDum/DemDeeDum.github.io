@@ -62,8 +62,8 @@
     grid-template-columns: 5vw minmax(10em, 10vw) minmax(20em, 80vw) 5vw;
 }
 
-.slick-arrow {
-    color: black;
+.top-sells-item-container {
+    margin-bottom: 2em;
 }
 
 @media (max-width: 709px) {
@@ -71,7 +71,6 @@
         display: block;
         margin: 0;
         padding: 0;
-        grid-template-columns: none;
     }
     .aside {
         display: grid;

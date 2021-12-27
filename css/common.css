@@ -89,3 +89,11 @@
             bottom: 1.2em;
         }
     }
+    
+    .slick-prev {
+        left: 0;
+    }
+    
+    .slick-next {
+        right: 0;
+    }
