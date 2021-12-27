@@ -6,6 +6,8 @@ $('.top-sells-item-container').slick({
     autoplay: true,
     autoplaySpeed: 2000,
     speed: 1000,
+    prevArrow: '',
+    nextArrow: '',
     responsive: [{
             breakpoint: 1350,
             settings: {
