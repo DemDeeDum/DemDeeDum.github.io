@@ -1,41 +1,48 @@
-.top-sells-header {
+.clothes-header {
     text-align: center;
     font-size: 2em;
 }
 
-.top-sells-header-container {
+.clothes-header-container {
     margin-bottom: 3em;
 }
 
-.top-sells-item {
+.clothes-item {
     text-align: center;
 }
 
-.top-sells-item-image {
+.clothes-item-image {
     width: 15em;
 }
 
-.top-sells-item-container {
+.clothes-item-image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.clothes-item-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(17em, 1fr));
     grid-auto-rows: minmax(32em, max-content);
+    margin-bottom: 2em;
+    overflow: visible;
 }
 
-.top-sells-item-image-container {
+.clothes-item-image-container {
     margin-bottom: 2em;
 }
 
-.top-sells-item-title-container {
+.clothes-item-title-container {
     margin-bottom: 1em;
 }
 
-.top-sells-item-price-container {
+.clothes-item-price-container {
     display: flex;
     justify-content: space-around;
     margin-bottom: 2em;
 }
 
-.top-sells-item-button {
+.clothes-item-button {
     width: 80%;
     height: 2em;
     background-color: #222222;
@@ -44,13 +51,26 @@
     font-size: 1em;
 }
 
+.clothes-item-button:hover {
+    background-color: darkseagreen;
+    border-color: darkseagreen;
+    color: black;
+}
+
 .main {
     display: grid;
     grid-template-columns: 5vw minmax(10em, 10vw) minmax(20em, 80vw) 5vw;
 }
 
+.slick-arrow {
+    color: black;
+}
+
 @media (max-width: 709px) {
     .main {
+        display: block;
+        margin: 0;
+        padding: 0;
         grid-template-columns: none;
     }
     .aside {
