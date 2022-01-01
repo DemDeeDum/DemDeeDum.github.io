@@ -46,6 +46,11 @@
         font-weight: bold;
     }
     
+    .category-list-header {
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+    
     a:hover,
     .svg-icon-bag:hover path,
     .svg-icon-bag:hover polygon,
@@ -96,4 +101,20 @@
     
     .slick-next {
         right: 0;
+    }
+    
+    .slick-arrow {
+        z-index: 2000;
+    }
+    
+    .slick-arrow::before {
+        opacity: 0;
+        color: black;
+        visibility: hidden;
+        transition: 1s opacity, 1s visibility;
+    }
+    
+    .top-sells-item-container:hover .slick-arrow::before {
+        visibility: visible;
+        opacity: 1;
     }
