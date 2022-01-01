@@ -7,16 +7,6 @@ class CommonDataProvider {
     }
 
     getClothesItemsData() {
-        const xhr = new XMLHttpRequest();
-        xhr.open(this.getMethod, this.url);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                let response = xhr.response;
-                console.log(response);
-            }
-        }
-
-        xhr.send();
 
         return [{
                 id: '12',
