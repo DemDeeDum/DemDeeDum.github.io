@@ -1,6 +1,6 @@
 'use strict';
 
-class PuchaseBag {
+class PurchaseBag {
     constructor(itemsCollection) {
         this.PURCHASE_LIST_KEY = 'purchase-list-key-spoon-shop';
 
