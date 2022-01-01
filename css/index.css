@@ -49,6 +49,7 @@
     color: white;
     font-weight: bold;
     font-size: 1em;
+    cursor: pointer;
 }
 
 .clothes-item-button:hover {
