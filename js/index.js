@@ -1,5 +1,29 @@
 'use strict';
 
+const itemsCollection = [{
+    id: '12',
+    image: {
+        alt: 'grey-dress',
+        src: 'images/2.jpg'
+    },
+    isTopSell: true,
+    title: {
+        text: 'Платье Футляр'
+    },
+    pricing: {
+        retailPrice: 2000,
+        wholesalePrice: 1700
+    }
+}];
+
+const clothesShowcase = new ClothesShowcase(itemsCollection);
+
+clothesShowcase.fillTopSellsContainer();
+clothesShowcase.fillClothesContainer();
+
+const purchaseBag = new PuchaseBag(itemsCollection);
+purchaseBag.setEvents();
+
 $('.top-sells-item-container').slick({
     infinite: true,
     slidesToShow: 4,
