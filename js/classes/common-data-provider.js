@@ -1,7 +1,23 @@
 'use strict';
 
 class CommonDataProvider {
+    constructor() {
+        this.getMethod = 'GET';
+        this.url = 'https://sheets.googleapis.com/v4/spreadsheets/1yCvXswSRiiWyU6V90QZOFGSGSXuST4R7nUBLN21LttM/values/Sheet1!A2:G2?key=AIzaSyCQc89-y4cimUMnpadCkIwW3_Qn1m739n0';
+    }
+
     getClothesItemsData() {
+        const xhr = new XMLHttpRequest();
+        xhr.open(this.getMethod, this.url);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                let response = xhr.response;
+                console.log(response);
+            }
+        }
+
+        xhr.send();
+
         return [{
                 id: '12',
                 image: {
@@ -87,6 +103,21 @@ class CommonDataProvider {
                 pricing: {
                     retailPrice: 2200,
                     wholesalePrice: 2000
+                }
+            },
+            {
+                id: '18',
+                image: {
+                    alt: 'black-jacket',
+                    src: 'images/7.jpg'
+                },
+                isTopSell: true,
+                title: {
+                    text: 'Куртка dwafawwa'
+                },
+                pricing: {
+                    retailPrice: 5000,
+                    wholesalePrice: 4600
                 }
             }
         ];
