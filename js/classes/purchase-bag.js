@@ -6,9 +6,10 @@ class PurchaseBag {
 
         this.itemsCollection = itemsCollection;
         this.purchaseCounterSpan = document.getElementById('purchase-counter');
+        this.purchaseListContainer = document.getElementsByClassName('purchase-list-container')[0];
 
         this.initPurchaseListData();
-        this.updatePurhaseCounterValue();
+        this.updatePurhaseData();
     }
 
     initPurchaseListData() {
@@ -18,6 +19,19 @@ class PurchaseBag {
         } else {
             this.purchaseList = [];
         }
+    }
+
+    fillPurchaseListContainer() {
+        this.purchaseList
+            .forEach(element => {
+                const htmlItem = this.createPurchaseBagHtmlItem(element);
+
+                this.purchaseListContainer.appendChild(htmlItem);
+            })
+    }
+
+    createPurchaseBagHtmlItem(objectPurchaseItem) {
+
     }
 
     setEvents() {
@@ -30,17 +44,13 @@ class PurchaseBag {
 
                 purchaseBag.purchaseList.push(itemId);
                 purchaseBag.updatePurhaseCounterValue();
-                purchaseBag.savePurchaseData();
+                purchaseBag.updatePurhaseData();
             });
         };
     }
 
-    updatePurhaseCounterValue() {
-        this.purchaseCounter = this.purchaseList.length;
-        this.purchaseCounterSpan.innerText = this.purchaseCounter;
-    }
-
-    savePurchaseData() {
+    updatePurhaseData() {
+        this.purchaseCounterSpan.innerText = this.purchaseList.length;
         localStorage.setItem(this.PURCHASE_LIST_KEY, this.purchaseList);
     }
 }
