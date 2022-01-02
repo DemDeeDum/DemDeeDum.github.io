@@ -1,39 +1,41 @@
 'use strict';
 
 const dataProvider = new CommonDataProvider();
-const itemsCollection = dataProvider.getClothesItemsData();
+dataProvider.downloadClothesItemsData(initIndexPage);
 
-const clothesShowcase = new ClothesShowcase(itemsCollection);
+function initIndexPage(itemsCollection) {
+    const clothesShowcase = new ClothesShowcase(itemsCollection);
 
-clothesShowcase.fillTopSellsContainer();
-clothesShowcase.fillClothesContainer();
+    clothesShowcase.fillTopSellsContainer();
+    clothesShowcase.fillClothesContainer();
 
-$('.top-sells-item-container').slick({
-    infinite: true,
-    slidesToShow: 4,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    speed: 1000,
-    responsive: [{
-            breakpoint: 1350,
-            settings: {
-                slidesToShow: 3
+    $('.top-sells-item-container').slick({
+        infinite: true,
+        slidesToShow: 4,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        speed: 1000,
+        responsive: [{
+                breakpoint: 1350,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 1100,
+                settings: {
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 800,
+                settings: {
+                    slidesToShow: 1
+                }
             }
-        },
-        {
-            breakpoint: 1100,
-            settings: {
-                slidesToShow: 2
-            }
-        },
-        {
-            breakpoint: 800,
-            settings: {
-                slidesToShow: 1
-            }
-        }
-    ]
-});
+        ]
+    });
 
-const purchaseBag = new PurchaseBag(itemsCollection);
-purchaseBag.setEvents();
+    const purchaseBag = new PurchaseBag(itemsCollection);
+    purchaseBag.setEvents();
+}
