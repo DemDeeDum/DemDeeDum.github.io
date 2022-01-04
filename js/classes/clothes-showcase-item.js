@@ -3,11 +3,20 @@
 class ClothesShowcaseItem {
     constructor(objectClothesItem) {
         this.objectClothesItem = objectClothesItem;
+        this.productItempageUrl = `/product.html?id=`;
     }
 
     createItemContainer() {
         const container = document.createElement('article');
         container.classList.add('clothes-item');
+
+        const clothesShowcaseItem = this;
+
+        container.addEventListener('click', () => {
+            const newUrl = `${clothesShowcaseItem.productItempageUrl}${this.objectClothesItem.id}`;
+
+            location.replace(newUrl);
+        });
 
         return container;
     }

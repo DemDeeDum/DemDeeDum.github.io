@@ -9,6 +9,7 @@
 
 .clothes-item {
     text-align: center;
+    cursor: pointer;
 }
 
 .clothes-item-image {
