@@ -43,7 +43,6 @@ class PurchaseBag {
                 const itemId = button.getAttribute('data-clothes-item-id');
 
                 purchaseBag.purchaseList.push(itemId);
-                purchaseBag.updatePurhaseCounterValue();
                 purchaseBag.updatePurhaseData();
             });
         };
