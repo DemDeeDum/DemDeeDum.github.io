@@ -114,7 +114,20 @@
         transition: 1s opacity, 1s visibility;
     }
     
-    .top-sells-item-container:hover .slick-arrow::before {
-        visibility: visible;
-        opacity: 1;
+    .main {
+        display: grid;
+        grid-template-columns: 5vw minmax(10em, 10vw) minmax(20em, 80vw) 5vw;
+    }
+    
+    @media (max-width: 709px) {
+        .main {
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+        .aside {
+            display: grid;
+            grid-template-columns: 20vw 20vw;
+            margin-bottom: 2em;
+        }
     }
