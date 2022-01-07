@@ -8,18 +8,30 @@
 
 .purchase-list-item {
     display: grid;
-    grid-template-columns: 5% 55% 10% 15% 10% 5%;
+    grid-template-columns: 5% 10% 50% 15% 15% 5%;
     font-size: 1.5em;
 }
 
 .grey-separation-line {
     border: solid .06em gainsboro;
     border-radius: 1em;
+    height: .01em;
 }
 
 .purchase-list-item-quantity-input {
     width: 2em;
     height: 1em;
+}
+
+.purchase-item-deleting-cross:focus,
+.purchase-item-deleting-cross {
+    border: 0;
+    font-size: 1.2em;
+}
+
+.purchase-item-deleting-cross:hover {
+    color: darkseagreen;
+    cursor: pointer;
 }
 
 .purchase-list-column-info {
@@ -46,7 +58,7 @@
 
 .purchase-list-total {
     display: grid;
-    grid-template-columns: 75% 10% 10% 5%;
+    grid-template-columns: 65% 15% 15% 5%;
 }
 
 .arrow-down {
@@ -57,28 +69,30 @@
     transform: scale(-1, -1);
 }
 
-.item-quantity-arrow {
+.purchase-item-quantity-arrow {
     height: .7em;
+    border: 0;
+    font-size: 1em;
 }
 
-.item-quantity-arrow:hover {
+.purchase-item-quantity-arrow:hover {
     color: darkseagreen;
     background-color: black;
     cursor: pointer;
 }
 
-.item-quantity {
+.purchase-item-quantity {
     flex-direction: column;
 }
 
-.item-quantity-arrow,
-.item-quantity,
-.item-quantity-container {
+.purchase-item-quantity-arrow,
+.purchase-item-quantity,
+.purchase-item-quantity-container {
     display: flex;
     justify-content: center;
 }
 
-.item-quantity-container {
+.purchase-item-quantity-container {
     justify-content: space-between;
     width: 1.2em;
 }

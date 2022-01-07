@@ -7,49 +7,142 @@ class PurchaseBag {
         this.itemsCollection = itemsCollection;
         this.purchaseCounterSpan = document.getElementById('purchase-counter');
         this.purchaseListContainer = document.getElementsByClassName('purchase-list-container')[0];
+        this.purchaseTotalPriceContainer = document.getElementById('purchase-total-price');
 
         this.initPurchaseListData();
-        this.updatePurhaseData();
+        this.updatePurchaseData();
     }
 
     initPurchaseListData() {
         const storedPurchaseList = localStorage.getItem(this.PURCHASE_LIST_KEY);
         if (storedPurchaseList) {
-            this.purchaseList = storedPurchaseList.split(',');
+            this.purchaseList = JSON.parse(storedPurchaseList);
         } else {
-            this.purchaseList = [];
+            this.purchaseList = {};
         }
     }
 
     fillPurchaseListContainer() {
-        this.purchaseList
-            .forEach(element => {
-                const htmlItem = this.createPurchaseBagHtmlItem(element);
+        const childrenArray = Array.from(this.purchaseListContainer.children);
+        childrenArray.forEach(child => {
+            if ((child.classList.contains('purchase-list-item') &&
+                    !child.classList.contains('purchase-list-column-info') &&
+                    !child.classList.contains('purchase-list-total')) ||
+                (child.classList.contains('grey-separation-line') &&
+                    !child.classList.contains('first-grey-separation-line'))) {
+                this.purchaseListContainer.removeChild(child);
+            }
+        });
 
-                this.purchaseListContainer.appendChild(htmlItem);
-            })
+        const totalPriceContainer = document.getElementsByClassName('purchase-list-total')[0];
+
+        const purchaseBagItems = this.itemsCollection
+            .filter(purchaseItem => purchaseItem.count > 0);
+
+        purchaseBagItems.forEach(purchaseItem => {
+            const htmlItem = this.createPurchaseBagHtmlItem(purchaseItem);
+            const separator = this.createGreyLineSeparator();
+
+            this.purchaseListContainer.insertBefore(htmlItem, totalPriceContainer);
+            this.purchaseListContainer.insertBefore(separator, totalPriceContainer);
+        });
+    }
+
+    createGreyLineSeparator() {
+        const separator = document.createElement('div');
+        separator.classList.add('grey-separation-line');
+
+        return separator;
     }
 
     createPurchaseBagHtmlItem(objectPurchaseItem) {
+        const purchaseBagItem = new PurchaseBagItem(objectPurchaseItem);
 
+        const itemContainer = purchaseBagItem.createItemContainer();
+        const leftEdgeContainer = purchaseBagItem.createLeftEdgeContainer();
+        const deletingCrossContainer = purchaseBagItem.createDeletingCrossContainer();
+        const itemInfoContainer = purchaseBagItem.createItemInfoContainer();
+        const itemQuantityContainer = purchaseBagItem.createItemQuantityContainer();
+        const itemPriceContainer = purchaseBagItem.createItemPriceContainer();
+        const rightEdgeContainer = purchaseBagItem.createRightEdgeContainer();
+
+        itemContainer.appendChild(leftEdgeContainer);
+        itemContainer.appendChild(deletingCrossContainer);
+        itemContainer.appendChild(itemInfoContainer);
+        itemContainer.appendChild(itemQuantityContainer);
+        itemContainer.appendChild(itemPriceContainer);
+        itemContainer.appendChild(rightEdgeContainer);
+
+        return itemContainer;
     }
 
-    setEvents() {
-        const buttons = document.getElementsByClassName('clothes-item-button');
+    setIndexPageEvents() {
+        const addToBagButtons = document.getElementsByClassName('clothes-item-button');
         const purchaseBag = this;
-        for (const button of buttons) {
+        for (const button of addToBagButtons) {
             button.addEventListener('click', (e) => {
+                e.stopPropagation();
+
                 const button = e.target;
                 const itemId = button.getAttribute('data-clothes-item-id');
 
-                purchaseBag.purchaseList.push(itemId);
-                purchaseBag.updatePurhaseData();
+                if (purchaseBag.purchaseList[itemId] === undefined) {
+                    purchaseBag.purchaseList[itemId] = { count: 1 };
+                } else {
+                    purchaseBag.purchaseList[itemId].count++;
+                }
+
+                purchaseBag.updatePurchaseData();
             });
         };
     }
 
-    updatePurhaseData() {
-        this.purchaseCounterSpan.innerText = this.purchaseList.length;
-        localStorage.setItem(this.PURCHASE_LIST_KEY, this.purchaseList);
+    setPurchaseBagPageEvents() {
+        const purchaseBag = this;
+        const deleteFromBagButtons = document.getElementsByClassName('purchase-item-deleting-cross');
+        for (const button of deleteFromBagButtons) {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+
+                const button = e.target;
+                const itemId = button.getAttribute('data-purchase-bag-item-id');
+
+                delete purchaseBag.purchaseList[itemId];
+
+                purchaseBag.updatePurchaseData();
+                purchaseBag.fillPurchaseListContainer();
+                purchaseBag.setPurchaseBagPageEvents();
+            });
+        }
+    }
+
+    updatePurchaseData() {
+        this.itemsCollection.forEach(purchaseItem => {
+            purchaseItem.count = 0;
+        });
+
+        let sum = 0;
+        let totalPrice = 0;
+        for (const purchaseItemId in this.purchaseList) {
+            if (this.purchaseList[purchaseItemId].count > 0) {
+                const purchaseItem = this.itemsCollection.find(x => x.id === purchaseItemId);
+                purchaseItem.count = this.purchaseList[purchaseItemId].count;
+
+                const purchaseBagItem = new PurchaseBagItem(purchaseItem);
+
+                sum += this.purchaseList[purchaseItemId].count;
+                totalPrice += purchaseBagItem.getPrice();
+            }
+        }
+
+        this.purchaseCounterSpan.innerText = sum;
+
+        if (this.purchaseTotalPriceContainer !== undefined &&
+            this.purchaseTotalPriceContainer !== null) {
+            this.purchaseTotalPriceContainer.innerText = totalPrice;
+        }
+
+        const purchaseListJson = JSON.stringify(this.purchaseList);
+        localStorage.setItem(this.PURCHASE_LIST_KEY, purchaseListJson);
     }
 }

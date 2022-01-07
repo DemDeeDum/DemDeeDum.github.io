@@ -65,21 +65,21 @@ class ClothesShowcaseItem {
         retailPriceContainer.appendChild(retailPriceHeader);
         retailPriceContainer.appendChild(retailPrice);
 
-        const wholesalePriceContainer = emptyDiv.cloneNode();
+        const promotionPriceContainer = emptyDiv.cloneNode();
 
-        const wholesalePriceHeader = emptyDiv.cloneNode();
-        wholesalePriceHeader.innerText = 'Опт (от 3 единиц)';
+        const promotionPriceHeader = emptyDiv.cloneNode();
+        promotionPriceHeader.innerText = 'Опт (от 3 единиц)';
 
-        const wholesalePrice = emptyDiv.cloneNode();
-        wholesalePrice.innerText = `${this.objectClothesItem.pricing.wholesalePrice} грн`;
+        const promotionPrice = emptyDiv.cloneNode();
+        promotionPrice.innerText = `${this.objectClothesItem.pricing.promotionPrice} грн`;
 
-        wholesalePriceContainer.appendChild(wholesalePriceHeader);
-        wholesalePriceContainer.appendChild(wholesalePrice);
+        promotionPriceContainer.appendChild(promotionPriceHeader);
+        promotionPriceContainer.appendChild(promotionPrice);
 
         priceContainer.appendChild(emptyDiv.cloneNode());
         priceContainer.appendChild(retailPriceContainer);
         priceContainer.appendChild(emptyDiv.cloneNode());
-        priceContainer.appendChild(wholesalePriceContainer);
+        priceContainer.appendChild(promotionPriceContainer);
         priceContainer.appendChild(emptyDiv.cloneNode());
 
         return priceContainer;

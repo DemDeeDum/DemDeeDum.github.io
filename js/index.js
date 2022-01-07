@@ -37,5 +37,5 @@ function initIndexPage(itemsCollection) {
     });
 
     const purchaseBag = new PurchaseBag(itemsCollection);
-    purchaseBag.setEvents();
+    purchaseBag.setIndexPageEvents();
 }

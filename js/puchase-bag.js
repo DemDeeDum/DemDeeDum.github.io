@@ -5,4 +5,6 @@ dataProvider.downloadClothesItemsData(initPurchaseBagPage);
 
 function initPurchaseBagPage(itemsCollection) {
     const purchaseBag = new PurchaseBag(itemsCollection);
+    purchaseBag.fillPurchaseListContainer();
+    purchaseBag.setPurchaseBagPageEvents();
 }
