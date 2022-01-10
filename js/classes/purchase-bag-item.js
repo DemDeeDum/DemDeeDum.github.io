@@ -63,17 +63,12 @@ class PurchaseBagItem {
     }
 
     createItemQuantityContainer() {
-        const itemQuantityVeryTopContainer = this.emptyDiv.cloneNode();
         const itemQuantityTopContainer = this.emptyDiv.cloneNode();
-
         const itemQuantityContainer = this.emptyDiv.cloneNode();
-        itemQuantityContainer.classList.add('purchase-item-quantity-container');
 
         const itemQuantity = this.emptyDiv.cloneNode();
         itemQuantity.classList.add('purchase-item-quantity');
         itemQuantity.innerText = this.objectPurchaseItem.count;
-
-        const itemQuantityArrowsContainer = this.emptyDiv.cloneNode();
 
         const buttonArrowUp = document.createElement('button');
         buttonArrowUp.classList.add('purchase-item-quantity-arrow');
@@ -83,16 +78,13 @@ class PurchaseBagItem {
         buttonArrowDown.classList.add('arrow-down');
         buttonArrowDown.innerHTML = '&#8963';
 
-        itemQuantityArrowsContainer.appendChild(buttonArrowUp);
-        itemQuantityArrowsContainer.appendChild(buttonArrowDown);
-
+        itemQuantityContainer.appendChild(buttonArrowUp);
         itemQuantityContainer.appendChild(itemQuantity);
-        itemQuantityContainer.appendChild(itemQuantityArrowsContainer);
+        itemQuantityContainer.appendChild(buttonArrowDown);
 
         itemQuantityTopContainer.appendChild(itemQuantityContainer);
-        itemQuantityVeryTopContainer.appendChild(itemQuantityTopContainer);
 
-        return itemQuantityVeryTopContainer;
+        return itemQuantityTopContainer;
     }
 
     createItemPriceContainer() {

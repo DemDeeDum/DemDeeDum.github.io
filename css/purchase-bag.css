@@ -40,7 +40,7 @@
 }
 
 .purchase-list-item>div {
-    padding: .7em;
+    padding: .7em 0;
     display: flex;
     justify-content: center;
 }
@@ -82,6 +82,7 @@
     -o-transform: scale(-1, -1);
     -ms-transform: scale(-1, -1);
     transform: scale(-1, -1);
+    height: min-content;
 }
 
 .purchase-item-quantity-arrow {
@@ -94,6 +95,7 @@
     color: darkseagreen;
     background-color: black;
     cursor: pointer;
+    border-radius: .5em;
 }
 
 .purchase-item-quantity {
@@ -116,6 +118,9 @@
     .purchase-item-info-container {
         display: block !important;
         height: min-content;
+    }
+    .purchase-item-info-container>div {
+        margin: .3em 0;
     }
     .purchase-item-name-container {
         flex-direction: row !important;
