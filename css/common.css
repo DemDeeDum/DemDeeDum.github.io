@@ -23,6 +23,7 @@
         grid-template-columns: 5vw 20vw 50vw 10vw 5vw;
     }
     
+    .bag-header-link-container,
     .header-shop-name-container {
         z-index: 10;
     }
