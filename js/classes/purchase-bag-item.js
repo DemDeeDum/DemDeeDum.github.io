@@ -40,8 +40,10 @@ class PurchaseBagItem {
 
     createItemInfoContainer() {
         const itemInfoContainer = this.emptyDiv.cloneNode();
+        itemInfoContainer.classList.add('purchase-item-info-container');
 
         const itemPhotoContainer = this.emptyDiv.cloneNode();
+        itemPhotoContainer.classList.add('purchase-item-image-container');
 
         const itemPhoto = document.createElement('img');
         itemPhoto.classList.add('purchase-list-item-image');
@@ -51,6 +53,7 @@ class PurchaseBagItem {
         itemPhotoContainer.appendChild(itemPhoto);
 
         const itemNameContainer = this.emptyDiv.cloneNode();
+        itemNameContainer.classList.add('purchase-item-name-container');
         itemNameContainer.innerText = this.objectPurchaseItem.title.text;
 
         itemInfoContainer.appendChild(itemPhotoContainer);

@@ -68,7 +68,7 @@ class ClothesShowcaseItem {
         const promotionPriceContainer = emptyDiv.cloneNode();
 
         const promotionPriceHeader = emptyDiv.cloneNode();
-        promotionPriceHeader.innerText = 'Опт (от 3 единиц)';
+        promotionPriceHeader.innerText = 'Акция';
 
         const promotionPrice = emptyDiv.cloneNode();
         promotionPrice.innerText = `${this.objectClothesItem.pricing.promotionPrice} грн`;
