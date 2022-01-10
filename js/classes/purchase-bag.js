@@ -109,11 +109,49 @@ class PurchaseBag {
 
                 delete purchaseBag.purchaseList[itemId];
 
-                purchaseBag.updatePurchaseData();
-                purchaseBag.fillPurchaseListContainer();
-                purchaseBag.setPurchaseBagPageEvents();
+                purchaseBag.refreshPurchaseBagList();
             });
         }
+
+        const incrementQuantityButtons = document.getElementsByClassName('quantity-arrow-up');
+        for (const button of incrementQuantityButtons) {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+
+                const button = e.target;
+                const itemId = button.getAttribute('data-purchase-bag-item-id');
+
+                if (purchaseBag.purchaseList[itemId] !== undefined &&
+                    purchaseBag.purchaseList[itemId] !== null) {
+                    purchaseBag.purchaseList[itemId].count++;
+                }
+
+                purchaseBag.refreshPurchaseBagList();
+            });
+        }
+
+        const decrementQuantityButtons = document.getElementsByClassName('quantity-arrow-down');
+        for (const button of decrementQuantityButtons) {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+
+                const button = e.target;
+                const itemId = button.getAttribute('data-purchase-bag-item-id');
+
+                if (purchaseBag.purchaseList[itemId] !== undefined &&
+                    purchaseBag.purchaseList[itemId] !== null) {
+                    purchaseBag.purchaseList[itemId].count--;
+                }
+
+                purchaseBag.refreshPurchaseBagList();
+            });
+        }
+    }
+
+    refreshPurchaseBagList() {
+        this.updatePurchaseData();
+        this.fillPurchaseListContainer();
+        this.setPurchaseBagPageEvents();
     }
 
     updatePurchaseData() {

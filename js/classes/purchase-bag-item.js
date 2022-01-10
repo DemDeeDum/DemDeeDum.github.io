@@ -72,11 +72,14 @@ class PurchaseBagItem {
 
         const buttonArrowUp = document.createElement('button');
         buttonArrowUp.classList.add('purchase-item-quantity-arrow');
+        buttonArrowUp.setAttribute('data-purchase-bag-item-id', this.objectPurchaseItem.id);
         buttonArrowUp.innerHTML = '&#8963';
 
         const buttonArrowDown = buttonArrowUp.cloneNode();
-        buttonArrowDown.classList.add('arrow-down');
+        buttonArrowDown.classList.add('quantity-arrow-down');
         buttonArrowDown.innerHTML = '&#8963';
+
+        buttonArrowUp.classList.add('quantity-arrow-up');
 
         itemQuantityContainer.appendChild(buttonArrowUp);
         itemQuantityContainer.appendChild(itemQuantity);
