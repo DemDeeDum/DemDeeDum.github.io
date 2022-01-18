@@ -116,6 +116,11 @@
         transition: 1s opacity, 1s visibility;
     }
     
+    .slick-slider:hover .slick-arrow::before {
+        opacity: 1;
+        visibility: visible;
+    }
+    
     .main {
         display: grid;
         grid-template-columns: 5vw minmax(10em, 10vw) minmax(20em, 80vw) 5vw;

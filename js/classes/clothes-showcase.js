@@ -33,11 +33,13 @@ class ClothesShowcase {
         const imageContainer = clothesShowcaseItem.createImageContainer();
         const titleContainer = clothesShowcaseItem.createTitleContainer();
         const priceContainer = clothesShowcaseItem.createPriceContainer();
+        const sizesContainer = clothesShowcaseItem.createSizesContainer();
         const buttonContainer = clothesShowcaseItem.createButtonContainer();
 
         container.appendChild(imageContainer);
         container.appendChild(titleContainer);
         container.appendChild(priceContainer);
+        container.appendChild(sizesContainer);
         container.appendChild(buttonContainer);
 
         return container;

@@ -14,7 +14,7 @@ function initIndexPage(itemsCollection) {
         slidesToShow: 4,
         autoplay: true,
         autoplaySpeed: 2000,
-        speed: 2000,
+        speed: 1000,
         responsive: [{
                 breakpoint: 1350,
                 settings: {

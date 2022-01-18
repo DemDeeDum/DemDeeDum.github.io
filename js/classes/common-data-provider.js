@@ -4,7 +4,7 @@ class CommonDataProvider {
     constructor() {
         this.ITEMS_DATA_KEY = 'items-data-spoon-shop';
         this.getMethod = 'GET';
-        this.url = 'https://script.google.com/macros/s/AKfycbx-nhzPuzmbvOID3FFCw8_N3shtZo_SgaV2A7Zdittq--Ef-cEf9tvKJE-c2DxnUmaO/exec';
+        this.url = 'https://script.google.com/macros/s/AKfycbxeD6NTqmLFJW71ll-K52uWmvjL7N6oTmPt-leiyesKb_iGJE0WeEg5xHOwzRMqTRM/exec';
     }
 
     downloadClothesItemsData(onGetData) {

@@ -23,24 +23,62 @@
 
 .clothes-item-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(17em, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(17.5em, 1fr));
     grid-auto-rows: minmax(32em, max-content);
     margin-bottom: 2em;
     overflow: visible;
 }
 
 .clothes-item-image-container {
-    margin-bottom: 2em;
-}
-
-.clothes-item-title-container {
     margin-bottom: 1em;
 }
 
-.clothes-item-price-container {
+.clothes-item-title-container {
+    height: 2em;
+    margin-bottom: 1em;
+    padding: 0 1.2em;
+}
+
+.clothes-item-price-info-container {
+    display: grid;
+    grid-template-columns: 17% 28% 10% 28% 17%;
+    grid-auto-rows: 2em;
+}
+
+.clothes-item-price-header {
+    text-align: center;
+    font-weight: bolder;
+}
+
+.clothes-item-promotional-price,
+.clothes-item-promotion-price-header {
+    color: red;
+}
+
+.clothes-item-crossed-retail-price {
+    text-decoration: line-through;
+    font-weight: lighter;
+    font-size: .7em;
+}
+
+.clothes-item-sizes-container {
+    display: grid;
+    grid-template-columns: 30% 8% 8% 8% 8% 8% 30%;
+    margin-bottom: 1em;
+}
+
+.clothes-item-sizes-container div {
     display: flex;
-    justify-content: space-around;
-    margin-bottom: 2em;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.clothes-item-sizes-container div:nth-child(2n + 1) {
+    font-size: .6em;
+}
+
+.clothes-item-sizes-container div:nth-child(2n) {
+    z-index: 10;
 }
 
 .clothes-item-button {

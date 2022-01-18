@@ -4,6 +4,7 @@ class ClothesShowcaseItem {
     constructor(objectClothesItem) {
         this.objectClothesItem = objectClothesItem;
         this.productItempageUrl = `/product.html?id=`;
+        this.emptyDiv = document.createElement('div');
     }
 
     createItemContainer() {
@@ -49,40 +50,72 @@ class ClothesShowcaseItem {
     }
 
     createPriceContainer() {
-        const priceContainer = document.createElement('div');
-        priceContainer.classList.add('clothes-item-price-container');
+        const priceInfoContainer = document.createElement('div');
+        priceInfoContainer.classList.add('clothes-item-price-info-container');
 
-        const emptyDiv = document.createElement('div');
+        const priceHeader = this.emptyDiv.cloneNode();
+        priceHeader.classList.add('clothes-item-price-header');
 
-        const retailPriceContainer = emptyDiv.cloneNode();
+        priceInfoContainer.appendChild(this.emptyDiv.cloneNode());
+        priceInfoContainer.appendChild(priceHeader);
+        priceInfoContainer.appendChild(this.emptyDiv.cloneNode());
 
-        const retailPriceHeader = emptyDiv.cloneNode();
-        retailPriceHeader.innerText = 'Розница';
+        const priceContainer = this.emptyDiv.cloneNode();
 
-        const retailPrice = emptyDiv.cloneNode();
+        const retailPrice = this.emptyDiv.cloneNode();
         retailPrice.innerText = `${this.objectClothesItem.pricing.retailPrice} грн`;
 
-        retailPriceContainer.appendChild(retailPriceHeader);
-        retailPriceContainer.appendChild(retailPrice);
+        if (this.objectClothesItem.isPromotion) {
+            priceHeader.classList.add('clothes-item-promotion-price-header');
+            priceHeader.innerText = 'Скидка 🔥';
 
-        const promotionPriceContainer = emptyDiv.cloneNode();
+            const promotionPrice = this.emptyDiv.cloneNode();
+            promotionPrice.classList.add('clothes-item-promotional-price');
+            promotionPrice.innerText = `${this.objectClothesItem.pricing.promotionPrice} грн`;
 
-        const promotionPriceHeader = emptyDiv.cloneNode();
-        promotionPriceHeader.innerText = 'Акция';
+            priceContainer.appendChild(promotionPrice);
 
-        const promotionPrice = emptyDiv.cloneNode();
-        promotionPrice.innerText = `${this.objectClothesItem.pricing.promotionPrice} грн`;
+            retailPrice.classList.add('clothes-item-crossed-retail-price');
+        } else {
+            priceHeader.innerText = 'Цена';
+        }
 
-        promotionPriceContainer.appendChild(promotionPriceHeader);
-        promotionPriceContainer.appendChild(promotionPrice);
+        priceContainer.appendChild(retailPrice);
 
-        priceContainer.appendChild(emptyDiv.cloneNode());
-        priceContainer.appendChild(retailPriceContainer);
-        priceContainer.appendChild(emptyDiv.cloneNode());
-        priceContainer.appendChild(promotionPriceContainer);
-        priceContainer.appendChild(emptyDiv.cloneNode());
+        priceInfoContainer.appendChild(priceContainer);
+        priceInfoContainer.appendChild(this.emptyDiv.cloneNode());
 
-        return priceContainer;
+        return priceInfoContainer;
+    }
+
+    createSizesContainer() {
+        const sizesContainer = this.emptyDiv.cloneNode();
+        sizesContainer.classList.add('clothes-item-sizes-container');
+
+        const width = this.emptyDiv.cloneNode();
+        width.innerText = this.objectClothesItem.sizes.width;
+
+        const leftCross = this.emptyDiv.cloneNode();
+        leftCross.innerHTML = '&#10006;';
+
+        const length = this.emptyDiv.cloneNode();
+        length.innerText = this.objectClothesItem.sizes.length;
+
+        const rightCross = this.emptyDiv.cloneNode();
+        rightCross.innerHTML = '&#10006;';
+
+        const height = this.emptyDiv.cloneNode();
+        height.innerText = this.objectClothesItem.sizes.heigth;
+
+        sizesContainer.appendChild(this.emptyDiv.cloneNode());
+        sizesContainer.appendChild(width);
+        sizesContainer.appendChild(leftCross);
+        sizesContainer.appendChild(length);
+        sizesContainer.appendChild(rightCross);
+        sizesContainer.appendChild(height);
+        sizesContainer.appendChild(this.emptyDiv.cloneNode());
+
+        return sizesContainer;
     }
 
     createButtonContainer() {
