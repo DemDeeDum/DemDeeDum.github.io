@@ -1,0 +1,36 @@
+.product-container {
+    display: grid;
+    grid-template-columns: 5% 40% 5% 45% 5%;
+}
+
+.product-selected-image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.product-all-images-container {
+    display: flex;
+    justify-content: center;
+}
+
+.product-all-images-container .product-image-container {
+    cursor: pointer;
+}
+
+.product-selected-image-container {
+    margin-bottom: 2em;
+}
+
+.product-image {
+    width: 4em;
+}
+
+.product-image-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-mini-selected-image-container {
+    border: solid .1em black;
+}
