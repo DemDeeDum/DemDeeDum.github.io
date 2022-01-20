@@ -4,7 +4,7 @@ class ProductImageGallery {
     constructor() {}
 
     setEvents() {
-        document.querySelectorAll('.product-image-container')
+        document.querySelectorAll('.product-image')
             .forEach(element => {
                 element.addEventListener('click', (e) => {
                     const newSelectedImage = e.target;

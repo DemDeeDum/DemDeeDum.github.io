@@ -8,11 +8,6 @@
     justify-content: center;
 }
 
-.product-all-images-container {
-    display: flex;
-    justify-content: center;
-}
-
 .product-all-images-container .product-image-container {
     cursor: pointer;
 }
@@ -22,15 +17,23 @@
 }
 
 .product-image {
+    opacity: .7;
     width: 4em;
 }
 
-.product-image-container {
+.product-image-container div {
     display: flex;
-    flex-direction: column;
     justify-content: center;
 }
 
-.product-mini-selected-image-container {
-    border: solid .1em black;
+.product-mini-selected-image {
+    opacity: 1;
+}
+
+.slick-next {
+    right: -1rem;
+}
+
+.slick-prev {
+    left: -1rem;
 }
