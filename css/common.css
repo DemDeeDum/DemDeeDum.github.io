@@ -90,10 +90,21 @@
         font-weight: bold;
     }
     
+    .purchase-counter-two-digit {
+        left: -1.74em !important;
+    }
+    
+    @media (max-width: 511px) {
+        .purchase-counter-two-digit {
+            left: .46em !important;
+            bottom: 1.2em !important;
+        }
+    }
+    
     @media (max-width: 439px) {
-        #purchase-counter {
-            left: .7em;
-            bottom: 1.2em;
+        .purchase-counter-one-digit {
+            left: .7em !important;
+            bottom: 1.2em !important;
         }
     }
     

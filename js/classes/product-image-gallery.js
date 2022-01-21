@@ -11,10 +11,12 @@ class ProductImageGallery {
                     const newSelectedImageContainer = newSelectedImage.closest('.product-image-container');
 
                     const currentSelectedImage = document.querySelector('.product-mini-selected-image');
-                    const currentSelectedImageContainer = currentSelectedImage.closest('.product-image-container');
+                    if (currentSelectedImage) {
+                        const currentSelectedImageContainer = currentSelectedImage.closest('.product-image-container');
 
-                    currentSelectedImageContainer.classList.remove('product-mini-selected-image-container');
-                    currentSelectedImage.classList.remove('product-mini-selected-image');
+                        currentSelectedImageContainer.classList.remove('product-mini-selected-image-container');
+                        currentSelectedImage.classList.remove('product-mini-selected-image');
+                    }
 
                     newSelectedImageContainer.classList.add('product-mini-selected-image-container');
                     newSelectedImage.classList.add('product-mini-selected-image');
@@ -25,5 +27,9 @@ class ProductImageGallery {
                     bigSelectedImage.setAttribute('src', newSelectedImageSrc);
                 });
             });
+    }
+
+    selectFirstOne() {
+        document.querySelector('.slick-active').querySelector('.product-image').click();
     }
 }

@@ -173,6 +173,14 @@ class PurchaseBag {
             }
         }
 
+        if (sum > 9) {
+            this.purchaseCounterSpan.classList.remove('purchase-counter-one-digit');
+            this.purchaseCounterSpan.classList.add('purchase-counter-two-digit');
+        } else {
+            this.purchaseCounterSpan.classList.add('purchase-counter-one-digit');
+            this.purchaseCounterSpan.classList.remove('purchase-counter-two-digit');
+        }
+
         this.purchaseCounterSpan.innerText = sum;
 
         if (this.purchaseTotalPriceContainer !== undefined &&
