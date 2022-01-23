@@ -1,10 +1,20 @@
 'use strict';
 
 const dataProvider = new CommonDataProvider();
-dataProvider.downloadClothesItemsData(initProductPage);
+dataProvider.downloadClothesItemsData(onGetItemCollection);
 
-function initProductPage(itemsCollection) {
+function onGetItemCollection(itemsCollection) {
     const purchaseBag = new PurchaseBag(itemsCollection);
+    const productDataProvider = new ProductDataProvider(itemsCollection);
+    productDataProvider.getAdditionalProductInfo(initProductPage);
+}
+
+function initProductPage(product) {
+    const pageTitle = document.querySelector('title');
+    pageTitle.innerHTML = product.title.text;
+
+    const productImageGallery = new ProductImageGallery(product);
+    productImageGallery.fillImageGallery();
 
     $('.product-all-images-slider-container').slick({
         infinite: true,
@@ -73,7 +83,6 @@ function initProductPage(itemsCollection) {
         ]
     });
 
-    const productImageGallery = new ProductImageGallery();
     productImageGallery.setEvents();
     productImageGallery.selectFirstOne();
 }

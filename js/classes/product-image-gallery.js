@@ -1,7 +1,11 @@
 'use strict';
 
 class ProductImageGallery {
-    constructor() {}
+    constructor(product) {
+        this.product = product;
+        this.imageGalleryContainer = document.querySelector('.product-all-images-container');
+        this.imageGalleryItemTemplate = document.querySelector('#image-gallery-item').innerHTML;
+    }
 
     setEvents() {
         document.querySelectorAll('.product-image')
@@ -31,5 +35,20 @@ class ProductImageGallery {
 
     selectFirstOne() {
         document.querySelector('.slick-active').querySelector('.product-image').click();
+    }
+
+    fillImageGallery() {
+        this.imageGalleryContainer.innerHTML = '';
+
+        const sliderContainer = document.createElement('div');
+        sliderContainer.classList.add("product-all-images-slider-container");
+
+        this.product.images.forEach(imageSrc => {
+            const htmlItem = this.imageGalleryItemTemplate.replace("{{image-src}}", imageSrc);
+
+            sliderContainer.innerHTML += (htmlItem);
+        });
+
+        this.imageGalleryContainer.appendChild(sliderContainer);
     }
 }

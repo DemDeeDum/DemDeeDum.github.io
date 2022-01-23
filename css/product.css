@@ -75,3 +75,16 @@
         width: 65%;
     }
 }
+
+.product-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.product-price-container,
+.product-title-container {
+    margin-bottom: 1em;
+    font-size: 1.5em;
+    font-weight: bold;
+}
