@@ -9,7 +9,7 @@ function initIndexPage(itemsCollection) {
     clothesShowcase.fillTopSellsContainer();
     clothesShowcase.fillClothesContainer();
 
-    $('.top-sells-item-container').slick({
+    $('.top-sells-item-slider-container').slick({
         infinite: true,
         slidesToShow: 4,
         autoplay: true,

@@ -30,7 +30,7 @@ class DataProvider {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 const response = xhr.response;
 
-                result = Boolean(response);
+                result = response === 'true';
             }
         }
 
@@ -64,10 +64,11 @@ class DataProvider {
     }
 
     createLastUpdatedUrl() {
-        const lastUpdated = localStorage.getItem(this.lastUpdatedKey);
+        const lastUpdated = new Date(localStorage.getItem(this.lastUpdatedKey));
         if (!lastUpdated) {
             lastUpdated = new Date(0);
         }
+
         const getIfShouldUpdateUrl = `${this.getIsShouldUpdateUrlPart}${lastUpdated}`;
 
         return getIfShouldUpdateUrl;

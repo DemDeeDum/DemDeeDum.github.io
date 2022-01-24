@@ -3,8 +3,8 @@
 class CommonDataProvider extends DataProvider {
     constructor() {
         super({
-            getDataUrl: 'https://script.google.com/macros/s/AKfycbxeD6NTqmLFJW71ll-K52uWmvjL7N6oTmPt-leiyesKb_iGJE0WeEg5xHOwzRMqTRM/exec',
-            getIsShouldUpdateUrlPart: 'https://script.google.com/macros/s/AKfycbxeD6NTqmLFJW71ll-K52uWmvjL7N6oTmPt-leiyesKb_iGJE0WeEg5xHOwzRMqTRM/exec?lastUpdated=',
+            getDataUrl: 'https://script.google.com/macros/s/AKfycbzXwJjUQkgh8txe1vIPYlMazDP4toIIqKzb-GwvTjSUwASp47-c6STIOVEtNwi3pAye/exec',
+            getIsShouldUpdateUrlPart: 'https://script.google.com/macros/s/AKfycbzXwJjUQkgh8txe1vIPYlMazDP4toIIqKzb-GwvTjSUwASp47-c6STIOVEtNwi3pAye/exec?lastUpdated=',
             dataKey: 'items-data-spoon-shop',
             lastUpdatedKey: 'last-update-items-data-spoon-shop',
             method: 'GET'

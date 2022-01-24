@@ -3,21 +3,29 @@
 class ClothesShowcase {
     constructor(itemsCollection) {
         this.itemsCollection = itemsCollection;
-        this.topSellsContainer = document.getElementsByClassName('top-sells-item-container')[0];
-        this.clothesContainer = document.getElementsByClassName('clothes-item-container')[0];
+        this.topSellsContainer = document.querySelector('.top-sells-item-container');
+        this.clothesContainer = document.querySelector('.clothes-item-container');
     }
 
     fillTopSellsContainer() {
+        this.topSellsContainer.innerHTML = '';
+
+        const topSellsSliderContainer = document.createElement('div');
+        topSellsSliderContainer.classList.add('top-sells-item-slider-container');
+
         this.itemsCollection
             .filter(x => x.isTopSell)
             .forEach(element => {
                 const htmlItem = this.createClothesHtmlItem(element);
 
-                this.topSellsContainer.appendChild(htmlItem);
+                topSellsSliderContainer.appendChild(htmlItem);
             });
+
+        this.topSellsContainer.appendChild(topSellsSliderContainer);
     }
 
     fillClothesContainer() {
+        this.clothesContainer.innerHTML = '';
         this.itemsCollection
             .forEach(element => {
                 const htmlItem = this.createClothesHtmlItem(element);
