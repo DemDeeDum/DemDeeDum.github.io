@@ -9,11 +9,11 @@
 
 .clothes-item {
     text-align: center;
-    cursor: pointer;
 }
 
 .clothes-item-image {
     width: 15em;
+    cursor: pointer;
 }
 
 .clothes-item-image-container {

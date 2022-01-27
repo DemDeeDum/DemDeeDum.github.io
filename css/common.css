@@ -117,7 +117,7 @@
     }
     
     .slick-arrow {
-        z-index: 2000;
+        z-index: 11;
     }
     
     .slick-arrow::before {
@@ -148,4 +148,23 @@
             grid-template-columns: 20vw 70vw;
             margin-bottom: 2em;
         }
+    }
+    
+    .added-product-message {
+        z-index: 11;
+        position: fixed;
+        left: 0em;
+        width: 100vw;
+        font-weight: bold;
+        color: black;
+        padding: .4em;
+        background-color: rgb(66, 250, 66);
+        border-top-right-radius: .5em;
+        border-bottom-right-radius: .5em;
+    }
+    
+    .added-product-message-hidden {
+        opacity: 0;
+        visibility: hidden;
+        transition: 4s opacity, 4s visibility;
     }

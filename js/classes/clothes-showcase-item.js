@@ -11,14 +11,6 @@ class ClothesShowcaseItem {
         const container = document.createElement('article');
         container.classList.add('clothes-item');
 
-        const clothesShowcaseItem = this;
-
-        container.addEventListener('click', () => {
-            const newUrl = `${clothesShowcaseItem.productItempageUrl}${this.objectClothesItem.id}`;
-
-            location.replace(newUrl);
-        });
-
         return container;
     }
 
@@ -30,6 +22,14 @@ class ClothesShowcaseItem {
         image.classList.add('clothes-item-image');
         image.setAttribute('src', this.objectClothesItem.image.src);
         image.setAttribute('alt', this.objectClothesItem.image.alt);
+
+        const clothesShowcaseItem = this;
+
+        image.addEventListener('click', () => {
+            const newUrl = `${clothesShowcaseItem.productItempageUrl}${this.objectClothesItem.id}`;
+
+            location.replace(newUrl);
+        });
 
         imageContainer.appendChild(image);
 

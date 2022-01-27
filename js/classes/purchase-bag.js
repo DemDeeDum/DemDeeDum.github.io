@@ -93,6 +93,9 @@ class PurchaseBag {
                 }
 
                 purchaseBag.updatePurchaseData();
+
+                const item = this.itemsCollection.find(x => x.id === itemId);
+                Message.showProductAddedMessage(item);
             });
         };
     }
@@ -166,10 +169,8 @@ class PurchaseBag {
                 const purchaseItem = this.itemsCollection.find(x => x.id === purchaseItemId);
                 purchaseItem.count = this.purchaseList[purchaseItemId].count;
 
-                const purchaseBagItem = new PurchaseBagItem(purchaseItem);
-
                 sum += this.purchaseList[purchaseItemId].count;
-                totalPrice += purchaseBagItem.getPrice();
+                totalPrice += ProductHelper.getPrice(purchaseItem);
             }
         }
 

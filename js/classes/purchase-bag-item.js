@@ -6,12 +6,6 @@ class PurchaseBagItem {
         this.emptyDiv = document.createElement('div');
     }
 
-    getPrice() {
-        return this.objectPurchaseItem.count * (this.objectPurchaseItem.isPromotion ?
-            this.objectPurchaseItem.pricing.promotionPrice :
-            this.objectPurchaseItem.pricing.retailPrice);
-    }
-
     createItemContainer() {
         const container = document.createElement('article');
         container.classList.add('purchase-list-item');
@@ -94,7 +88,7 @@ class PurchaseBagItem {
         const itemPriceTopContainer = this.emptyDiv.cloneNode();
 
         const itemPriceContainer = this.emptyDiv.cloneNode();
-        itemPriceContainer.innerText = this.getPrice();
+        itemPriceContainer.innerText = ProductHelper.getPrice(this.objectPurchaseItem);
 
         itemPriceTopContainer.appendChild(itemPriceContainer);
 
