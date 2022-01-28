@@ -9,6 +9,8 @@ class Message {
 
     static delayForAddedProductMessage = 3000;
 
+    static goTopDelayForAddedProductMessage = 3000;
+
     static marginDataAttribute = 'data-top-margin';
 
     static showProductAddedMessage(product) {
@@ -19,7 +21,7 @@ class Message {
 
         setTimeout(() => {
             messageContainer.classList.add('added-product-message-hidden');
-            setTimeout(Message.moveMessagesToTop, 3000);
+            setTimeout(Message.moveMessagesToTop, Message.goTopDelayForAddedProductMessage);
         }, Message.delayForAddedProductMessage);
 
         Message.body.appendChild(messageContainer);

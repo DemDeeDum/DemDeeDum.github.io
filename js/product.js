@@ -6,18 +6,20 @@ dataProvider.downloadClothesItemsData(onGetItemCollection);
 function onGetItemCollection(itemsCollection) {
     const purchaseBag = new PurchaseBag(itemsCollection);
     const productDataProvider = new ProductDataProvider(itemsCollection);
-    productDataProvider.getAdditionalProductInfo(initProductPage);
+    productDataProvider.getAdditionalProductInfo((product) => initProductPage(product, purchaseBag));
 }
 
-function initProductPage(product) {
+function initProductPage(product, purchaseBag) {
     const pageTitle = document.querySelector('title');
     pageTitle.innerHTML = product.title.text;
+
+    ProductHelper.mergeImagesArrayWithMainImage(product);
 
     const productImageGallery = new ProductImageGallery(product);
     productImageGallery.fillImageGallery();
 
     $('.product-all-images-slider-container').slick({
-        infinite: true,
+        infinite: false,
         slidesToShow: 6,
         speed: 1000,
         responsive: [{
@@ -85,4 +87,9 @@ function initProductPage(product) {
 
     productImageGallery.setEvents();
     productImageGallery.selectFirstOne();
+
+    const productInfoSection = new ProductInfoSection(product);
+    productInfoSection.fillProductInfoSection();
+
+    purchaseBag.setProductPageEvents();
 }

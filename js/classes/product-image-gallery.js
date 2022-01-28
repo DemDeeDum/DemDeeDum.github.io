@@ -34,7 +34,10 @@ class ProductImageGallery {
     }
 
     selectFirstOne() {
-        document.querySelector('.slick-active').querySelector('.product-image').click();
+        const firstFoundActive = document.querySelector('.slick-active');
+        if (firstFoundActive) {
+            firstFoundActive.querySelector('.product-image').click();
+        }
     }
 
     fillImageGallery() {
@@ -43,11 +46,13 @@ class ProductImageGallery {
         const sliderContainer = document.createElement('div');
         sliderContainer.classList.add("product-all-images-slider-container");
 
-        this.product.images.forEach(imageSrc => {
-            const htmlItem = this.imageGalleryItemTemplate.replace("{{image-src}}", imageSrc);
+        if (this.product.images) {
+            this.product.images.forEach(imageSrc => {
+                const htmlItem = this.imageGalleryItemTemplate.replace("{{image-src}}", imageSrc);
 
-            sliderContainer.innerHTML += (htmlItem);
-        });
+                sliderContainer.innerHTML += (htmlItem);
+            });
+        }
 
         this.imageGalleryContainer.appendChild(sliderContainer);
     }

@@ -77,27 +77,11 @@ class PurchaseBag {
     }
 
     setIndexPageEvents() {
-        const addToBagButtons = document.getElementsByClassName('clothes-item-button');
-        const purchaseBag = this;
-        for (const button of addToBagButtons) {
-            button.addEventListener('click', (e) => {
-                e.stopPropagation();
+        this.setEventsForAddItemButton();
+    }
 
-                const button = e.target;
-                const itemId = button.getAttribute('data-clothes-item-id');
-
-                if (purchaseBag.purchaseList[itemId] === undefined) {
-                    purchaseBag.purchaseList[itemId] = { count: 1 };
-                } else {
-                    purchaseBag.purchaseList[itemId].count++;
-                }
-
-                purchaseBag.updatePurchaseData();
-
-                const item = this.itemsCollection.find(x => x.id === itemId);
-                Message.showProductAddedMessage(item);
-            });
-        };
+    setProductPageEvents() {
+        this.setEventsForAddItemButton();
     }
 
     setPurchaseBagPageEvents() {
@@ -191,5 +175,29 @@ class PurchaseBag {
 
         const purchaseListJson = JSON.stringify(this.purchaseList);
         localStorage.setItem(this.PURCHASE_LIST_KEY, purchaseListJson);
+    }
+
+    setEventsForAddItemButton() {
+        const addToBagButtons = document.getElementsByClassName('clothes-item-button');
+        const purchaseBag = this;
+        for (const button of addToBagButtons) {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+
+                const button = e.target;
+                const itemId = button.getAttribute('data-clothes-item-id');
+
+                if (purchaseBag.purchaseList[itemId] === undefined) {
+                    purchaseBag.purchaseList[itemId] = { count: 1 };
+                } else {
+                    purchaseBag.purchaseList[itemId].count++;
+                }
+
+                purchaseBag.updatePurchaseData();
+
+                const item = this.itemsCollection.find(x => x.id === itemId);
+                Message.showProductAddedMessage(item);
+            });
+        };
     }
 }

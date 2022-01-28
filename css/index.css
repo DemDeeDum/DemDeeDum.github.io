@@ -50,53 +50,6 @@
     font-weight: bolder;
 }
 
-.clothes-item-promotional-price,
-.clothes-item-promotion-price-header {
-    color: red;
-}
-
-.clothes-item-crossed-retail-price {
-    text-decoration: line-through;
-    font-weight: lighter;
-    font-size: .7em;
-}
-
-.clothes-item-sizes-container {
-    display: grid;
-    grid-template-columns: 30% 8% 8% 8% 8% 8% 30%;
-    margin-bottom: 1em;
-}
-
-.clothes-item-sizes-container div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.clothes-item-sizes-container div:nth-child(2n + 1) {
-    font-size: .6em;
-}
-
-.clothes-item-sizes-container div:nth-child(2n) {
-    z-index: 10;
-}
-
-.clothes-item-button {
-    width: 80%;
-    height: 2em;
-    background-color: #222222;
-    color: white;
-    font-weight: bold;
-    font-size: 1em;
-    cursor: pointer;
-}
-
-.clothes-item-button:hover {
-    background-color: darkseagreen;
-    border-color: darkseagreen;
-    color: black;
-}
-
 .top-sells-item-container {
     margin-bottom: 2em;
 }

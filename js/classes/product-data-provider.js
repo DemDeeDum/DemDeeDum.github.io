@@ -8,8 +8,8 @@ class ProductDataProvider extends DataProvider {
 
         if (itemId) {
             super({
-                getDataUrl: `https://script.google.com/macros/s/AKfycbxbKo46WpQqeAnZNRhMeRqM1MMzgAS7qMdl2orIy-KzgiwQJi_fd5QLrCz6ZXu_QqdoIg/exec?id=${itemId}`,
-                getIsShouldUpdateUrlPart: 'https://script.google.com/macros/s/AKfycbxbKo46WpQqeAnZNRhMeRqM1MMzgAS7qMdl2orIy-KzgiwQJi_fd5QLrCz6ZXu_QqdoIg/exec?lastUpdated=',
+                getDataUrl: `https://script.google.com/macros/s/AKfycbw1LBnfuPt60LKujMJCb9NWvdw9VT-qDuq07hyjRrglhBSRj6RUgsVsRh-abyEuPhaoqA/exec?id=${itemId}`,
+                getIsShouldUpdateUrlPart: 'https://script.google.com/macros/s/AKfycbw1LBnfuPt60LKujMJCb9NWvdw9VT-qDuq07hyjRrglhBSRj6RUgsVsRh-abyEuPhaoqA/exec?lastUpdated=',
                 dataKey: `product-additional-info-${itemId}`,
                 lastUpdatedKey: `last-update-product-addition-info-${itemId}`,
                 method: 'GET'

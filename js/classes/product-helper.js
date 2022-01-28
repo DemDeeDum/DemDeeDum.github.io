@@ -6,4 +6,14 @@ class ProductHelper {
             product.pricing.promotionPrice :
             product.pricing.retailPrice);
     }
+
+    static mergeImagesArrayWithMainImage(product) {
+        if (product.images) {
+            if (!product.images.includes(product.image.src)) {
+                product.images.unshift(product.image.src);
+            }
+        } else {
+            product.images = [product.image.src];
+        }
+    }
 }
