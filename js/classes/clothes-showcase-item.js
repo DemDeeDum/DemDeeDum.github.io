@@ -3,7 +3,6 @@
 class ClothesShowcaseItem {
     constructor(objectClothesItem) {
         this.objectClothesItem = objectClothesItem;
-        this.productItempageUrl = `/product.html?id=`;
         this.emptyDiv = document.createElement('div');
     }
 
@@ -26,7 +25,7 @@ class ClothesShowcaseItem {
         const clothesShowcaseItem = this;
 
         image.addEventListener('click', () => {
-            const newUrl = `${clothesShowcaseItem.productItempageUrl}${this.objectClothesItem.id}`;
+            const newUrl = `${ProductHelper.productPageUrl}${clothesShowcaseItem.objectClothesItem.id}`;
 
             location.replace(newUrl);
         });

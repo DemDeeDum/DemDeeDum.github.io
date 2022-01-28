@@ -10,7 +10,6 @@ class ProductInfoSection {
     static descriptionEmpty = 'Описание не найдено';
 
     fillProductInfoSection() {
-
         let htmlItem = this.productInfoTemplate
             .replace('{{promotional-price}}', this.product.pricing.promotionPrice)
             .replace('{{price}}', this.product.pricing.retailPrice)
@@ -20,6 +19,7 @@ class ProductInfoSection {
             .replace('{{heigth}}', this.product.sizes.heigth)
             .replace('{{id}}', this.product.id)
             .replace('{{description}}', this.product.description ?? ProductInfoSection.descriptionEmpty);
+
         if (this.product.isPromotion) {
             htmlItem = htmlItem
                 .replace('{{hide}}', '')

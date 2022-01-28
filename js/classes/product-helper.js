@@ -16,4 +16,6 @@ class ProductHelper {
             product.images = [product.image.src];
         }
     }
+
+    static productPageUrl = '/product.html?id=';
 }

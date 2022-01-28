@@ -44,6 +44,14 @@ class PurchaseBagItem {
         itemPhoto.setAttribute('src', this.objectPurchaseItem.image.src);
         itemPhoto.setAttribute('alt', this.objectPurchaseItem.image.alt);
 
+        const purchaseBagItem = this.objectPurchaseItem;
+
+        itemPhoto.addEventListener('click', () => {
+            const newUrl = `${ProductHelper.productPageUrl}${purchaseBagItem.id}`;
+
+            location.replace(newUrl);
+        });
+
         itemPhotoContainer.appendChild(itemPhoto);
 
         const itemNameContainer = this.emptyDiv.cloneNode();

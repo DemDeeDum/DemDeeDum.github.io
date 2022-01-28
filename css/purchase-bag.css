@@ -65,6 +65,7 @@
 
 .purchase-list-item-image {
     width: 10em;
+    cursor: pointer;
 }
 
 .purchase-list-total {
