@@ -94,7 +94,7 @@
         left: -1.74em !important;
     }
     
-    @media (max-width: 511px) {
+    @media (max-width: 519px) {
         .purchase-counter-two-digit {
             left: .46em !important;
             bottom: 1.2em !important;
@@ -160,9 +160,13 @@
         padding: .4em;
         border-top-right-radius: .5em;
         border-bottom-right-radius: .5em;
-        padding-right: 5em;
     }
-    
+
+    .message>div {
+        width: 80vw;
+        background-color: inherit;
+    }
+
     .message-hidden {
         opacity: 0;
         visibility: hidden;

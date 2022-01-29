@@ -46,7 +46,11 @@ class Message {
         }
         const messageContainer = document.createElement('div');
         messageContainer.classList.add(messageData.class);
-        messageContainer.innerHTML = messageData.createMessage(product);
+
+        const messageText = document.createElement('div');
+        messageText.innerHTML = messageData.createMessage(product);
+
+        messageContainer.appendChild(messageText);
 
         Message.setEvents(messageContainer);
 
