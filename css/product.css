@@ -103,6 +103,13 @@
     }
 }
 
+@media (max-width: 850px) {
+    .product-sizes {
+        grid-template-columns: 30% 8% 8% 8% 8% 8% 30%;
+    }
+}
+
+
 @media (max-width: 540px) {
     .product-all-images-container {
         display: flex;
@@ -116,6 +123,10 @@
 @media (max-width: 400px) {
     .product-selected-image {
         width: 15em;
+    }
+
+    .product-sizes {
+        grid-template-columns: 25% 10% 10% 10% 10% 10% 25%;
     }
 }
 
