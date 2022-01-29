@@ -97,6 +97,10 @@ class PurchaseBag {
                 delete purchaseBag.purchaseList[itemId];
 
                 purchaseBag.refreshPurchaseBagList();
+
+                const deletedItem = purchaseBag.itemsCollection.find(x => x.id == itemId);
+                
+                Message.showMessage(deletedItem, Message.MESSAGE_TYPES.DELETED_PRODUCT);
             });
         }
 
@@ -111,6 +115,10 @@ class PurchaseBag {
                 if (purchaseBag.purchaseList[itemId] !== undefined &&
                     purchaseBag.purchaseList[itemId] !== null) {
                     purchaseBag.purchaseList[itemId].count++;
+
+                    const item = purchaseBag.itemsCollection.find(x => x.id == itemId);
+
+                    Message.showMessage(item, Message.MESSAGE_TYPES.COUNT_INCREMENT);
                 }
 
                 purchaseBag.refreshPurchaseBagList();
@@ -128,6 +136,10 @@ class PurchaseBag {
                 if (purchaseBag.purchaseList[itemId] !== undefined &&
                     purchaseBag.purchaseList[itemId] !== null) {
                     purchaseBag.purchaseList[itemId].count--;
+
+                    const item = purchaseBag.itemsCollection.find(x => x.id == itemId);
+
+                    Message.showMessage(item, Message.MESSAGE_TYPES.COUNT_DECREMENT);
                 }
 
                 purchaseBag.refreshPurchaseBagList();
@@ -196,8 +208,8 @@ class PurchaseBag {
                 purchaseBag.updatePurchaseData();
 
                 const item = this.itemsCollection.find(x => x.id === itemId);
-                Message.showProductAddedMessage(item);
+                Message.showMessage(item, Message.MESSAGE_TYPES.ADDED_PRODUCT);
             });
-        };
+        };  
     }
 }

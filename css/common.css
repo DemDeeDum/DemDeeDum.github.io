@@ -150,7 +150,7 @@
         }
     }
     
-    .added-product-message {
+    .message {
         z-index: 11;
         position: fixed;
         left: 0em;
@@ -158,16 +158,31 @@
         font-weight: bold;
         color: black;
         padding: .4em;
-        background-color: rgb(66, 250, 66);
         border-top-right-radius: .5em;
         border-bottom-right-radius: .5em;
-        padding-left: 2em;
+        padding-right: 2em;
     }
     
-    .added-product-message-hidden {
+    .message-hidden {
         opacity: 0;
         visibility: hidden;
         transition: 4s opacity, 4s visibility;
+    }
+
+    .added-product-message {
+        background-color: rgb(66, 250, 66);
+    }
+
+    .deleted-product-message {
+        background-color: rgb(235, 35, 35);
+    }
+
+    .count-increment-product-message {
+        background-color: rgb(84, 218, 72);
+    }
+
+    .count-decrement-product-message {
+        background-color: rgb(240, 199, 64);
     }
     
     .hide {
