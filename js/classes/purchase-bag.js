@@ -138,8 +138,12 @@ class PurchaseBag {
                     purchaseBag.purchaseList[itemId].count--;
 
                     const item = purchaseBag.itemsCollection.find(x => x.id == itemId);
-
-                    Message.showMessage(item, Message.MESSAGE_TYPES.COUNT_DECREMENT);
+                    
+                    if(purchaseBag.purchaseList[itemId].count > 0) {
+                        Message.showMessage(item, Message.MESSAGE_TYPES.COUNT_DECREMENT);
+                    } else {
+                        Message.showMessage(item, Message.MESSAGE_TYPES.DELETED_PRODUCT);
+                    }
                 }
 
                 purchaseBag.refreshPurchaseBagList();
