@@ -2,7 +2,16 @@
 
 class ClothesShowcase {
     constructor(itemsCollection) {
-        this.itemsCollection = itemsCollection;
+        const queryString = location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const filters = urlParams.get('filters');
+        if (filters) {
+            const filtersArray = filters.split('$');
+            this.itemsCollection = itemsCollection.filter(x => filtersArray.every(y => x.tags.includes(y)));
+        } else {
+            this.itemsCollection = itemsCollection;
+        }
+
         this.topSellsContainer = document.querySelector('.top-sells-item-container');
         this.clothesContainer = document.querySelector('.clothes-item-container');
     }
