@@ -86,6 +86,53 @@
                     <div></div>
                 </article>
             </section>
+            <section class="order-form-container">
+                <form id="order-form">
+                    <legend>Оформление заказа</legend>
+                    <fieldset>
+                        <div class="order-form-field-container">
+                            <div class="order-form-label-container">
+                                <label for="name">Имя</label>
+                            </div>
+                            <div class="order-form-input-container">
+                                <input id="name" type="text" />
+                            </div>
+                        </div>
+                        <div class="order-form-field-container">
+                            <div class="order-form-label-container">
+                                <label for="surname">Фамилия</label>
+                            </div>
+                            <div class="order-form-input-container">
+                                <input id="surname" type="text" />
+                            </div>
+                        </div>
+                        <div class="order-form-field-container">
+                            <div class="order-form-label-container">
+                                <label for="patronymic">Отчество</label>
+                            </div>
+                            <div class="order-form-input-container">
+                                <input id="patronymic" type="text" />
+                            </div>
+                        </div>
+                        <div class="order-form-field-container">
+                            <div class="order-form-label-container">
+                                <label for="phone">Телефон</label>
+                            </div>
+                            <div class="order-form-input-container">
+                                <input id="phone" type="tel" value="+380"/>
+                            </div>
+                        </div>
+                        <div class="order-form-field-container">
+                            <div class="order-form-label-container">
+                                <label for="post-department-number">Номер отделения "Новая Почта"</label>
+                            </div>
+                            <div class="order-form-input-container">
+                                <input id="post-department-number" type="number" max="9999" min="1" />
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </section>
         </article>
         <div></div>
     </main>
@@ -94,6 +141,7 @@
     <script src="js/classes/data-provider.js"></script>
     <script src="js/classes/common-data-provider.js"></script>
     <script src="js/classes/message.js"></script>
+    <script src="js/classes/order-form.js"></script>
     <script src="js/classes/product-helper.js"></script>
     <script src="js/classes/purchase-bag-item.js"></script>
     <script src="js/classes/purchase-bag.js"></script>
