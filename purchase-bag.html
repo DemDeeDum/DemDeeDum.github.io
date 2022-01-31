@@ -89,6 +89,14 @@
             <section class="order-form-container">
                 <form id="order-form">
                     <legend>Оформление заказа</legend>
+                    <div class="order-form-validation hide">
+                        <ul>
+                            <li>Имя - от трёх букв, двойное через тире</li>
+                            <li>Фамилия - от трёх букв, двойная через тире</li>
+                            <li>Отчество - от трёх букв, двойное через тире</li>
+                            <li>Телефон - +380ххххххххх (можно без +38)</li>
+                        </ul>
+                    </div>
                     <fieldset>
                         <div class="order-form-field-container">
                             <div class="order-form-label-container">
@@ -129,6 +137,9 @@
                             <div class="order-form-input-container">
                                 <input id="post-department-number" type="number" max="9999" min="1" />
                             </div>
+                        </div>
+                        <div class="order-form-submit-container">
+                            <button id="order-form-submit">Оформить</button>
                         </div>
                     </fieldset>
                 </form>

@@ -190,7 +190,7 @@
     }
     
     .hide {
-        display: none;
+        display: none !important;
     }
     
     .clothes-item-promotional-price,

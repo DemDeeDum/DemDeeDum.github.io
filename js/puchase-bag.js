@@ -10,4 +10,5 @@ function initPurchaseBagPage(itemsCollection) {
 
     const orderForm = new OrderForm();
     orderForm.setValidation();
+    orderForm.setEvents();
 }
