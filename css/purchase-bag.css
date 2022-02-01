@@ -245,11 +245,50 @@
     .purchase-list-item-image {
         width: 40vw;
     }
-
+    .order-form-submit-container,
     .order-form-field-container {
+        width: min-content;
+    }
+    .order-form-validation li {
+        width: 13em;
+    }
+    .order-form-field-container label{
+        width: 15em;
+    }
+}
+
+@media (max-width: 365px) {
+    .order-form-input-container>input {
+        width: 13em;
+    }
+    .order-form-field-container label{
+        width: 13em;
+    }
+}
+
+@media (max-width: 320px) {
+    .order-form-input-container>input {
+        width: 12em;
+    }
+    .order-form-field-container label{
+        width: 12em;
+    }
+}
+
+@media (max-width: 305px) {
+    .order-form-input-container>input {
+        width: 11em;
+    }
+    .order-form-field-container label{
+        width: 11em;
+    }
+}
+
+@media (max-width: 290px) {
+    .order-form-input-container>input {
         width: 10em;
     }
-    .order-form-input-container>input {
+    .order-form-field-container label{
         width: 10em;
     }
 }
