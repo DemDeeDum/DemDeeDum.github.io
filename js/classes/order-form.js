@@ -9,6 +9,8 @@ class OrderForm {
         this.patronymicInput = document.querySelector('#patronymic');
         this.phoneInput = document.querySelector('#phone');
         this.postDepartmentNumberInput = document.querySelector('#post-department-number');
+        this.addOrderUrl = 'https://script.google.com/macros/s/AKfycbwsADMluzvvk-PZLhajuIjnoEMWKEzxcBH0a1sKGMnU8oRs-uccAb3ccpnmV6Ug0VE/exec?order=';
+        this.method = 'GET';
     }
 
     setValidation() {
@@ -45,9 +47,59 @@ class OrderForm {
             e.preventDefault();
 
             if (orderForm.validateForm()) {
+                const addOrderRequest = {
+                    name: orderForm.nameInput.value,
+                    surname: orderForm.surnameInput.value,
+                    patronymic: orderForm.patronymicInput.value,
+                    phoneNumber: orderForm.preparePhoneNumber(orderForm.phoneInput.value),
+                    postDepartmentNumber: orderForm.postDepartmentNumberInput.value,
+                    items: PurchaseBag.getPurchaseListItems().map(orderForm.preparePurchaseItem)
+                };
 
+                const serializedRequest = JSON.stringify(addOrderRequest);
+                const encodedRequest = encodeURI(serializedRequest);
+                const url = orderForm.addOrderUrl.concat(encodedRequest);
+
+                const xhr = new XMLHttpRequest();
+                xhr.open(orderForm.method, url);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        const response = xhr.response;
+
+                        if (response === 'true') {
+                            alert('Заказ добавлен');
+                        } else {
+                            alert('Ошибка');
+                        }
+                    }
+                }
+
+                xhr.send();
             }
         });
+    }
+
+    preparePhoneNumber(phoneNumber) {
+        const withoutBeginning = /^0\(?\d{2}\)?\s?\d{3}\s?\-?\s?\d{2}\s?\-?\s?\d{2}$/
+        if (withoutBeginning.test(phoneNumber)) {
+            phoneNumber = `\+38${phoneNumber}`;
+        }
+
+        const withoutPlus = /^380\(?\d{2}\)?\s?\d{3}\s?\-?\s?\d{2}\s?\-?\s?\d{2}$/;
+        if (withoutPlus.test(phoneNumber)) {
+            phoneNumber = `\+${phoneNumber}`;
+        }
+
+        return phoneNumber;
+    }
+
+    preparePurchaseItem(item) {
+        return  {
+            id: item.id,
+            title: item.title.text,
+            count: item.count,
+            price: ProductHelper.getPrice(item)
+        };
     }
 
     validateInput(input, regex) {

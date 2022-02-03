@@ -4,7 +4,7 @@ class PurchaseBag {
     constructor(itemsCollection) {
         this.PURCHASE_LIST_KEY = 'purchase-list-key-spoon-shop';
 
-        this.itemsCollection = itemsCollection;
+        PurchaseBag.itemsCollection = itemsCollection;
         this.purchaseCounterSpan = document.getElementById('purchase-counter');
         this.purchaseListContainer = document.getElementsByClassName('purchase-list-container')[0];
         this.purchaseTotalPriceContainer = document.getElementById('purchase-total-price');
@@ -36,7 +36,7 @@ class PurchaseBag {
 
         const totalPriceContainer = document.getElementsByClassName('purchase-list-total')[0];
 
-        const purchaseBagItems = this.itemsCollection
+        const purchaseBagItems = PurchaseBag.itemsCollection
             .filter(purchaseItem => purchaseItem.count > 0);
 
         purchaseBagItems.forEach(purchaseItem => {
@@ -158,7 +158,7 @@ class PurchaseBag {
     }
 
     updatePurchaseData() {
-        this.itemsCollection.forEach(purchaseItem => {
+        PurchaseBag.itemsCollection.forEach(purchaseItem => {
             purchaseItem.count = 0;
         });
 
@@ -166,7 +166,7 @@ class PurchaseBag {
         let totalPrice = 0;
         for (const purchaseItemId in this.purchaseList) {
             if (this.purchaseList[purchaseItemId].count > 0) {
-                const purchaseItem = this.itemsCollection.find(x => x.id === purchaseItemId);
+                const purchaseItem = PurchaseBag.itemsCollection.find(x => x.id === purchaseItemId);
                 purchaseItem.count = this.purchaseList[purchaseItemId].count;
 
                 sum += this.purchaseList[purchaseItemId].count;
@@ -211,9 +211,13 @@ class PurchaseBag {
 
                 purchaseBag.updatePurchaseData();
 
-                const item = this.itemsCollection.find(x => x.id === itemId);
+                const item = PurchaseBag.itemsCollection.find(x => x.id === itemId);
                 Message.showMessage(item, Message.MESSAGE_TYPES.ADDED_PRODUCT);
             });
         };  
+    }
+
+    static getPurchaseListItems() {
+        return PurchaseBag.itemsCollection.filter(item => item.count > 0);
     }
 }
