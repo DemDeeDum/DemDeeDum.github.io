@@ -101,7 +101,7 @@ class OrderForm {
             id: item.id,
             title: item.title.text,
             count: item.count,
-            price: ProductHelper.getPrice(item) * item.count
+            price: ProductHelper.getPrice(item)
         };
     }
 
