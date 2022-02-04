@@ -1,9 +1,11 @@
 'use strict';
 
 class OrderForm {
-    constructor() {
+    constructor(purchaseBag) {
         this.form = document.querySelector('#order-form');
         this.validationMessage = document.querySelector('.order-form-validation');
+        this.successMessage = document.querySelector('.order-form-order-added');
+        this.failMessage = document.querySelector('.order-form-order-adding-error');
         this.nameInput = document.querySelector('#name');
         this.surnameInput = document.querySelector('#surname');
         this.patronymicInput = document.querySelector('#patronymic');
@@ -11,6 +13,7 @@ class OrderForm {
         this.postDepartmentNumberInput = document.querySelector('#post-department-number');
         this.addOrderUrl = 'https://script.google.com/macros/s/AKfycbwsADMluzvvk-PZLhajuIjnoEMWKEzxcBH0a1sKGMnU8oRs-uccAb3ccpnmV6Ug0VE/exec?order=';
         this.method = 'GET';
+        this.purchaseBag = purchaseBag;
     }
 
     setValidation() {
@@ -53,7 +56,7 @@ class OrderForm {
                     patronymic: orderForm.patronymicInput.value,
                     phoneNumber: orderForm.preparePhoneNumber(orderForm.phoneInput.value),
                     postDepartmentNumber: orderForm.postDepartmentNumberInput.value,
-                    items: PurchaseBag.getPurchaseListItems().map(orderForm.preparePurchaseItem)
+                    items: orderForm.purchaseBag.getPurchaseListItems().map(orderForm.preparePurchaseItem)
                 };
 
                 const serializedRequest = JSON.stringify(addOrderRequest);
@@ -67,9 +70,9 @@ class OrderForm {
                         const response = xhr.response;
 
                         if (response === 'true') {
-                            alert('Заказ добавлен');
+                            orderForm.success();
                         } else {
-                            alert('Ошибка');
+                            orderForm.fail();
                         }
                     }
                 }
@@ -98,7 +101,7 @@ class OrderForm {
             id: item.id,
             title: item.title.text,
             count: item.count,
-            price: ProductHelper.getPrice(item)
+            price: ProductHelper.getPrice(item) * item.count
         };
     }
 
@@ -118,5 +121,19 @@ class OrderForm {
         allInputs.forEach((input) => input.dispatchEvent(new KeyboardEvent('keyup')));
 
         return this.form.querySelectorAll('.invalid-input').length === 0;
+    }
+
+    fail() {
+        this.successMessage.classList.add('hide');
+        this.failMessage.classList.remove('hide');
+    }
+
+    success() {
+        this.form.querySelectorAll('input').forEach(input => input.value = '');
+
+        this.successMessage.classList.remove('hide');
+        this.failMessage.classList.add('hide');
+
+        this.purchaseBag.clearPurchaseList(true);
     }
 }

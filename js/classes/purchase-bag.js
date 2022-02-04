@@ -4,7 +4,7 @@ class PurchaseBag {
     constructor(itemsCollection) {
         this.PURCHASE_LIST_KEY = 'purchase-list-key-spoon-shop';
 
-        PurchaseBag.itemsCollection = itemsCollection;
+        this.itemsCollection = itemsCollection;
         this.purchaseCounterSpan = document.getElementById('purchase-counter');
         this.purchaseListContainer = document.getElementsByClassName('purchase-list-container')[0];
         this.purchaseTotalPriceContainer = document.getElementById('purchase-total-price');
@@ -36,7 +36,7 @@ class PurchaseBag {
 
         const totalPriceContainer = document.getElementsByClassName('purchase-list-total')[0];
 
-        const purchaseBagItems = PurchaseBag.itemsCollection
+        const purchaseBagItems = this.itemsCollection
             .filter(purchaseItem => purchaseItem.count > 0);
 
         purchaseBagItems.forEach(purchaseItem => {
@@ -98,7 +98,7 @@ class PurchaseBag {
 
                 purchaseBag.refreshPurchaseBagList();
 
-                const deletedItem = purchaseBag.itemsCollection.find(x => x.id == itemId);
+                const deletedItem = this.itemsCollection.find(x => x.id == itemId);
                 
                 Message.showMessage(deletedItem, Message.MESSAGE_TYPES.DELETED_PRODUCT);
             });
@@ -116,7 +116,7 @@ class PurchaseBag {
                     purchaseBag.purchaseList[itemId] !== null) {
                     purchaseBag.purchaseList[itemId].count++;
 
-                    const item = purchaseBag.itemsCollection.find(x => x.id == itemId);
+                    const item = this.itemsCollection.find(x => x.id == itemId);
 
                     Message.showMessage(item, Message.MESSAGE_TYPES.COUNT_INCREMENT);
                 }
@@ -137,7 +137,7 @@ class PurchaseBag {
                     purchaseBag.purchaseList[itemId] !== null) {
                     purchaseBag.purchaseList[itemId].count--;
 
-                    const item = purchaseBag.itemsCollection.find(x => x.id == itemId);
+                    const item = this.itemsCollection.find(x => x.id == itemId);
                     
                     if(purchaseBag.purchaseList[itemId].count > 0) {
                         Message.showMessage(item, Message.MESSAGE_TYPES.COUNT_DECREMENT);
@@ -158,7 +158,7 @@ class PurchaseBag {
     }
 
     updatePurchaseData() {
-        PurchaseBag.itemsCollection.forEach(purchaseItem => {
+        this.itemsCollection.forEach(purchaseItem => {
             purchaseItem.count = 0;
         });
 
@@ -166,7 +166,7 @@ class PurchaseBag {
         let totalPrice = 0;
         for (const purchaseItemId in this.purchaseList) {
             if (this.purchaseList[purchaseItemId].count > 0) {
-                const purchaseItem = PurchaseBag.itemsCollection.find(x => x.id === purchaseItemId);
+                const purchaseItem = this.itemsCollection.find(x => x.id === purchaseItemId);
                 purchaseItem.count = this.purchaseList[purchaseItemId].count;
 
                 sum += this.purchaseList[purchaseItemId].count;
@@ -211,13 +211,23 @@ class PurchaseBag {
 
                 purchaseBag.updatePurchaseData();
 
-                const item = PurchaseBag.itemsCollection.find(x => x.id === itemId);
+                const item = this.itemsCollection.find(x => x.id === itemId);
                 Message.showMessage(item, Message.MESSAGE_TYPES.ADDED_PRODUCT);
             });
         };  
     }
 
-    static getPurchaseListItems() {
-        return PurchaseBag.itemsCollection.filter(item => item.count > 0);
+    getPurchaseListItems() {
+        return this.itemsCollection.filter(item => item.count > 0);
+    }
+
+    clearPurchaseList(redrawPurchaseList) {
+        this.purchaseList = {};
+
+        this.updatePurchaseData();
+
+        if (redrawPurchaseList) {
+            this.fillPurchaseListContainer();
+        }
     }
 }
