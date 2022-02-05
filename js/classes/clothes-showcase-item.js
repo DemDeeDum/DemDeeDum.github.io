@@ -22,15 +22,13 @@ class ClothesShowcaseItem {
         image.setAttribute('src', this.objectClothesItem.image.src);
         image.setAttribute('alt', this.objectClothesItem.image.alt);
 
-        const clothesShowcaseItem = this;
+        const productLink = document.createElement('a');
+        productLink.setAttribute('href', `${ProductHelper.productPageUrl}${this.objectClothesItem.id}`);
+        productLink.setAttribute('target', '_blank');
+        
+        productLink.appendChild(image);
 
-        image.addEventListener('click', () => {
-            const newUrl = `${ProductHelper.productPageUrl}${clothesShowcaseItem.objectClothesItem.id}`;
-
-            location.replace(newUrl);
-        });
-
-        imageContainer.appendChild(image);
+        imageContainer.appendChild(productLink);
 
         return imageContainer;
     }
