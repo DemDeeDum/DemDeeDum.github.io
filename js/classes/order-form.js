@@ -78,6 +78,8 @@ class OrderForm {
                 }
 
                 xhr.send();
+            } else {
+                orderForm.showValidationMessage();
             }
         });
     }
@@ -109,18 +111,20 @@ class OrderForm {
         const result = regex.test(input.value);
         if (!result) {
             input.classList.add('invalid-input');
-            this.validationMessage.classList.remove('hide');
+            this.showValidationMessage();
         } else {
             input.classList.remove('invalid-input');
-            this.validationMessage.classList.add('hide');
+            this.hideValidationMessage();
         }
     }
 
     validateForm() {
         const allInputs = this.form.querySelectorAll('input');
         allInputs.forEach((input) => input.dispatchEvent(new KeyboardEvent('keyup')));
+        
+        const purchaseNotListEmpty = this.purchaseBag.itemsCollection.some(item => item.count > 0);
 
-        return this.form.querySelectorAll('.invalid-input').length === 0;
+        return this.form.querySelectorAll('.invalid-input').length === 0 && purchaseNotListEmpty;
     }
 
     fail() {
@@ -135,5 +139,13 @@ class OrderForm {
         this.failMessage.classList.add('hide');
 
         this.purchaseBag.clearPurchaseList(true);
+    }
+
+    showValidationMessage() {
+        this.validationMessage.classList.remove('hide');
+    }
+
+    hideValidationMessage() {
+        this.validationMessage.classList.add('hide');
     }
 }

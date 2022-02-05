@@ -200,13 +200,14 @@
 .order-form-order-adding-error,
 .order-form-order-added {
     margin-bottom: 2em;
+    display: flex;
+    justify-content: center;
 }
 
 .order-form-order-adding-error div,
 .order-form-order-added div {
     font-weight: bold;
     color: forestgreen;
-    font-size: 1.1em;
     text-align: center;
 }
 
@@ -238,6 +239,10 @@
     .order-form-field-container {
         display: block;
         width: 100%;
+    }
+    .order-form-order-adding-error div,
+    .order-form-order-added div {
+        width: 20em;
     }
 }
 
