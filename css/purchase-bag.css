@@ -217,21 +217,25 @@
 
 .order-form-loader {
     position: absolute;
-    width: 35em;
-    height: 19em;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
     display: flex;
     flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.4);
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 .order-form-loader>div {
     width: 100%;
-    height: 6em;
-    display: flex;
-    flex-direction: column-reverse;
     text-align: center;
     font-size: 1.3em;
     background-color: rgba(255, 255, 255, 0);
+}
+
+.order-form-fieldset {
+    position: relative;
 }
 
 @media (max-width: 1100px) {
@@ -263,11 +267,6 @@
     .order-form-order-added div {
         width: 20em;
     }
-    .order-form-loader {
-        width: 35em;
-        height: 27em;
-    }
-    
     .order-form-loader>div {
         height: 6em;
     }

@@ -8,7 +8,9 @@ function initPurchaseBagPage(itemsCollection) {
     purchaseBag.fillPurchaseListContainer();
     purchaseBag.setPurchaseBagPageEvents();
 
-    const orderForm = new OrderForm(purchaseBag);
-    orderForm.setValidation();
-    orderForm.setEvents();
+    if (!OrderForm.IS_INITIALIZED) {
+        const orderForm = new OrderForm(purchaseBag);
+        orderForm.setValidation();
+        orderForm.setEvents();
+    }
 }

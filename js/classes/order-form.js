@@ -11,10 +11,17 @@ class OrderForm {
         this.patronymicInput = document.querySelector('#patronymic');
         this.phoneInput = document.querySelector('#phone');
         this.postDepartmentNumberInput = document.querySelector('#post-department-number');
+        this.loader = document.querySelector('.order-form-loader');
         this.addOrderUrl = 'https://script.google.com/macros/s/AKfycbyQ777mRNRAqjFVlhWz2vn0yD54GEBJxm809fqO6Jp_V4-xytjEwZCvy7xjDVE9ByyT/exec?order=';
         this.method = 'GET';
         this.purchaseBag = purchaseBag;
+
+        OrderForm.IS_INITIALIZED = true;
     }
+
+    static IS_INITIALIZED = false;
+    static LOADER_ANIMATION_INTERVAL = 3000;
+    static LOADER_ANIMATION_STEP = 500;
 
     setValidation() {
         this.postDepartmentNumberInput.addEventListener('keyup', (e) => {
@@ -65,23 +72,61 @@ class OrderForm {
 
                 const xhr = new XMLHttpRequest();
                 xhr.open(orderForm.method, url);
+                xhr.addEventListener("load", () => orderForm.hideLoader(orderForm));
+                xhr.addEventListener("error", () => orderForm.hideLoader(orderForm));
+                xhr.addEventListener("abort", () => orderForm.hideLoader(orderForm));
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         const response = xhr.response;
 
                         if (response === 'true') {
                             orderForm.success();
-                        } else {
-                            orderForm.fail();
                         }
+                    } else {
+                        orderForm.fail();
                     }
                 }
 
                 xhr.send();
+
+                orderForm.showLoader();
             } else {
                 orderForm.showValidationMessage();
             }
         });
+    }
+
+    startLoaderAnimation() {
+        const loaderTextContainer = this.loader.querySelector('div');
+        const loaderInitialText = loaderTextContainer.innerText;
+
+        this.animateLoader(loaderTextContainer, loaderInitialText);
+
+        setInterval(() => {
+            this.animateLoader(loaderTextContainer, loaderInitialText);
+        }, OrderForm.LOADER_ANIMATION_INTERVAL);
+    }
+
+    animateLoader(loaderTextContainer, loaderInitialText) {
+        setTimeout(() => { 
+            loaderTextContainer.innerText = loaderInitialText.concat('.');
+        }, OrderForm.LOADER_ANIMATION_STEP);
+
+        setTimeout(() => { 
+            loaderTextContainer.innerText = loaderInitialText.concat('..');
+        }, OrderForm.LOADER_ANIMATION_STEP * 2);
+
+        setTimeout(() => { 
+            loaderTextContainer.innerText = loaderInitialText.concat('...');
+        }, OrderForm.LOADER_ANIMATION_STEP * 3);
+
+        setTimeout(() => { 
+            loaderTextContainer.innerText = loaderInitialText.concat('....');
+        }, OrderForm.LOADER_ANIMATION_STEP * 4);
+
+        setTimeout(() => { 
+            loaderTextContainer.innerText = loaderInitialText;
+        }, OrderForm.LOADER_ANIMATION_STEP * 5);
     }
 
     preparePhoneNumber(phoneNumber) {
@@ -150,6 +195,12 @@ class OrderForm {
     }
 
     showLoader() {
-        
+        this.loader.classList.remove('hide');
+
+        this.startLoaderAnimation();
+    }
+
+    hideLoader(orderForm) {
+        orderForm.loader.classList.add('hide');
     }
 }
