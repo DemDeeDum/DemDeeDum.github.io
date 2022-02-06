@@ -164,7 +164,7 @@
 
     .message>div {
         width: 80vw;
-        background-color: inherit;
+        background-color: rgba(255, 255, 255, 0);
     }
 
     .message-hidden {
@@ -174,19 +174,19 @@
     }
 
     .added-product-message {
-        background-color: rgb(66, 250, 66);
+        background-color: rgba(66, 250, 66, 0.6);
     }
 
     .deleted-product-message {
-        background-color: rgb(235, 35, 35);
+        background-color: rgba(235, 35, 35, 0.6);
     }
 
     .count-increment-product-message {
-        background-color: rgb(84, 218, 72);
+        background-color: rgba(22, 153, 10, 0.6);
     }
 
     .count-decrement-product-message {
-        background-color: rgb(240, 199, 64);
+        background-color: rgba(240, 199, 64, 0.6);
     }
     
     .hide {
