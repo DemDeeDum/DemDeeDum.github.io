@@ -17,6 +17,8 @@ class ClothesShowcaseItem {
         const imageContainer = document.createElement('div');
         imageContainer.classList.add('clothes-item-image-container');
 
+        const verticalFlex = this.emptyDiv.cloneNode();
+
         const image = document.createElement('img');
         image.classList.add('clothes-item-image');
         image.setAttribute('src', this.objectClothesItem.image.src);
@@ -28,7 +30,9 @@ class ClothesShowcaseItem {
         
         productLink.appendChild(image);
 
-        imageContainer.appendChild(productLink);
+        verticalFlex.appendChild(productLink);
+
+        imageContainer.appendChild(verticalFlex);
 
         return imageContainer;
     }
