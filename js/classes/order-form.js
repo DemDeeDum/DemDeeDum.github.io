@@ -12,7 +12,7 @@ class OrderForm {
         this.phoneInput = document.querySelector('#phone');
         this.postDepartmentNumberInput = document.querySelector('#post-department-number');
         this.loader = document.querySelector('.order-form-loader');
-        this.addOrderUrl = 'https://script.google.com/macros/s/AKfycbyQ777mRNRAqjFVlhWz2vn0yD54GEBJxm809fqO6Jp_V4-xytjEwZCvy7xjDVE9ByyT/exec?order=';
+        this.addOrderUrl = 'https://script.google.com/macros/s/AKfycbyam1JtguVr9640J1D-fW3siMueRuwVttWnbDUit2gd91-37OPhaHaNFnTZhsfAd4fX/exec?order=';
         this.method = 'GET';
         this.purchaseBag = purchaseBag;
 
